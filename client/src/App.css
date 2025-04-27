@@ -1,0 +1,36 @@
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  * {
+    box-sizing: border-box;
+  }
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.test-p {
+    background-color: bisque;
+}
+.inputNum {
+    margin: 10px;
+    color: aliceblue;
+}
+.pageList{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+
+}
+.sign{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
