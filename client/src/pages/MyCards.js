@@ -17,11 +17,11 @@ function MyCards() {
         }
         const fetchData = async() => {
             const res = await fetch("http://localhost:5000/api/boards", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${user.token}`
-            }
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${user.token}`
+                }
             })
             if (!res.ok) {
                 const errorText = await res.text();
@@ -35,9 +35,14 @@ function MyCards() {
             setFiltered(Array.isArray(data) ? data : [])
         }
         fetchData();
-  
     }, [user?.token]);
-    console.log("data in likes fetch: ", boards);
+
+    const handleFilter = (tag) => {
+        const filteredCards = boards.filter((card) => card.tags && card.tags.includes(tag));
+        setFiltered(filteredCards);
+        setActiveTag(tag);
+    };
+
     const deleteBoard = async(id) => {
         console.log(`http://localhost:5000/api/boards/${id}`);
         const res = await fetch(`http://localhost:5000/api/boards/${id}`, {
@@ -49,21 +54,23 @@ function MyCards() {
         })
         const data = await res.json();
         return data;
-    }
-
-    const handleFilter = (tag) => {
-        const filteredCards = boards.filter((card) => card.tags && card.tags.includes(tag));
-        setFiltered(filteredCards);
-        setActiveTag(tag);
-    }
-
+    };
+    
     const handleDeleteCard = async(id) => {
         const confirm = window.confirm("Do you wanna delete card?");
         if (confirm) {
         const newBoards = await deleteBoard(id);
         setBoards(newBoards);
-        }
-    }
+        };
+    };
+
+    useEffect(() => {
+        const uniqueTags = new Set(boards.flatMap((board) => board.tags || []));
+        setTags(Array.from(uniqueTags));
+        setFiltered(Array.isArray(boards) ? boards : []);
+        setActiveTag('All boards');
+    }, [boards]);
+
     const likeBoard = async(id, newLikes) => {
         const res = await fetch(`http://localhost:5000/api/boards/likes/${id}`, {
             method: 'PUT',
