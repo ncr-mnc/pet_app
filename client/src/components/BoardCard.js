@@ -34,7 +34,7 @@ function BoardCard({cards, bgColor, tags}) {
             }}>
                 <CardMedia 
                 component="img"
-                image={cards.image}
+                src={cards.image}
                 alt={cards.title}
                 sx={{
                     height: "auto", 

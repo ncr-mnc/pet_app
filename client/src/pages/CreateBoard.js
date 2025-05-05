@@ -70,8 +70,8 @@ function CreateCard() {
       };
     return (
         <Box maxWidth="lg" sx={{ display: "flex", gap: 3, mt: 4, alignItems: 'center', justifyContent: 'space-around', flexDirection: {  
-            xs: 'column',  // мобільні
-            sm: 'row',   // планшети
+            xs: 'column',  
+            sm: 'row',   
             md: 'row', } }}>
             <Box sx={{ flex: 1, maxWidth: 400 }}>
                 <Stack direction="column" spacing={2} >

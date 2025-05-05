@@ -44,7 +44,7 @@ function SingIN() {
        if(res.ok) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.userId);
-        setMessage("Success!")
+        setMessage("")
         navigate('/');
        } else {
         setMessage("Wrong data, try again or sign up first");

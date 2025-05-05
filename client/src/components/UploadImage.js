@@ -1,14 +1,27 @@
 import { Button } from "@mui/material";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
-function UploadImage({value, onChange}) {
-    const handleImageComp = (e) => {
+const  UploadImage = ({value, onChange}) => {
+    const handleImageComp = async (e) => {
         const file = e.target.files?.[0];
-        if (file) {
-            const imageURL = URL.createObjectURL(file);
-            onChange(imageURL);
-        }
-    }
+            if(!file) return;
+            const formData = new FormData();
+            formData.append('image', file);
+            try{
+            const res = await fetch('http://localhost:5000/api/upload', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await res.json();
+            console.log('data from upload: ', data);
+            if (res.ok) {
+                onChange(data.imageUrl);
+            } else {
+                console.error('error uploading image:', data.message);
+        }} catch (err) {
+            console.error('error uploading image:', err.message);
+        };
+    };
     return (
         <>
         <Button
