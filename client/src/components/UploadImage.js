@@ -13,9 +13,11 @@ function UploadImage({value, onChange}) {
         <>
         <Button
         variant="text"
-        startIcon={<FileUploadIcon />}
-        sx={{ color: "purple" }}
+        startIcon={<FileUploadIcon/>}
         component="label"
+        sx={{
+            backgroundColor: '#141414'
+        }}
         >
             Upload Image
             <input hidden type="file" onChange={handleImageComp} />
@@ -26,7 +28,7 @@ function UploadImage({value, onChange}) {
               alt="Preview"
               style={{ marginTop: "8px", maxWidth: "100%", borderRadius: "8px" }}
             />
-          )}
+        )}
         </>
     )
 }

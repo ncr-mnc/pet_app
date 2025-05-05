@@ -10,6 +10,7 @@ import MyCards from './pages/MyCards';
 import EditCard from './pages/EditCard';
 import { AuthProvider } from './context/AuthContext';
 import SingIN from './pages/SignInPage';
+import CommentPage from './pages/CommentPage';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                             <Route path='/myCards' element={<MyCards/>}/>
                             <Route path="/edit/:id" element={<EditCard/>}/>
                             <Route path='/signIn' element={<SingIN/>}/>
+                            <Route path='/comment/:id' element={<CommentPage/>}/>
                         </Routes>
                     </div>
                 </BrowserRouter>

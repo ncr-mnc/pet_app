@@ -3,6 +3,7 @@ html, body, #root {
     padding: 0;
     width: 100%;
     height: 100%;
+    background-color: #1d1f1f;
   }
   * {
     box-sizing: border-box;
@@ -15,22 +16,10 @@ html, body, #root {
     width: 100%;
 }
 
-.test-p {
-    background-color: bisque;
-}
-.inputNum {
-    margin: 10px;
-    color: aliceblue;
-}
 .pageList{
     display: flex;
     justify-content: space-around;
     margin: 20px;
+}
 
-}
-.sign{
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
-}
 

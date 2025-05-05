@@ -7,8 +7,10 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NavLink } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
-function CardWrapper({card, onDelete}) {
+function CardWrapper({card, onDelete, onLike}) {
     const cardRef = useRef();
     const handleDownload = () => {
         if (!cardRef.current) return;
@@ -21,26 +23,34 @@ function CardWrapper({card, onDelete}) {
             <div ref={cardRef}>
                 <BoardCard key={card._id} cards={card} bgColor={card.bgColor} tags={card.tags} />
             </div>
-            <Stack direction="row" sx={{justifyContent: "center"}}>
+            <Stack direction="row" sx={{justifyContent: "space-around", width: 300, display: 'flex', flexWrap: 'wrap'}}>
                 <Button
                 variant='contained'
                 size="small"
-                sx={{marginLeft: "8px", backgroundColor: card.bgColor}}
                 component={NavLink}
                 to={`/edit/${card._id}`}
-                endIcon={<EditIcon/>}>Edit Card</Button>
+                ><EditIcon/></Button>
+                <Button
+                variant='contained'
+                size="small"
+                component={NavLink}
+                to={`/comment/${card._id}`}                
+                ><AddCommentIcon/></Button>
                 <Button 
                 variant='contained'
                 size="small"  
                 onClick={handleDownload} 
-                sx={{backgroundColor: card.bgColor}}
-                endIcon={<ArrowCircleDownIcon/>}>Download</Button>
+                ><ArrowCircleDownIcon/></Button>
                 <Button 
                 variant='contained'
                 size="small"  
-                sx={{backgroundColor: card.bgColor}}
                 onClick={() => onDelete(card._id)} 
-                endIcon={<DeleteIcon/>}>Delete Card</Button>
+                ><DeleteIcon/></Button>
+                <Button 
+                variant='contained'
+                size="small"  
+                sx={{ marginTop: '8px'}}
+                onClick={() => onLike(card._id, card.likes)}><FavoriteIcon/></Button>
             </Stack>
         </Stack>
     )

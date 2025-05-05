@@ -22,12 +22,6 @@ function TagsInput({tags, onChange}) {
             variant="outlined" 
             size="small"
             value={input}
-            sx={{color: "#8332a8",
-                '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                        borderColor: '#8332a8', 
-                },}
-            }} 
             onChange={(e) => setInput(e.target.value)}
             />
             <Button 

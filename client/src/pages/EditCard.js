@@ -10,6 +10,7 @@ import { Container, Box, Stack, Button, Alert, Snackbar } from "@mui/material";
 import { useAuth } from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
+
 function EditCard() {
     const navigate = useNavigate();
     const [boards, setBoards] = useState([]);
@@ -20,6 +21,7 @@ function EditCard() {
     const [tags, setTags] = useState([]);
     const [image, setImage] = useState(null);
     const [bgColor, setBgColor] = useState("#ffffff");
+    const [likes, setLikes] = useState([]);
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
 
@@ -31,7 +33,6 @@ function EditCard() {
             })
             const data = await res.json();
             setBoards(data);
-            console.log(data)
         }
         fetchData();
     }, []);
@@ -45,6 +46,7 @@ function EditCard() {
                 setCaption(cardToEdit.caption || "");
                 setImage(cardToEdit.image || null);
                 setTags(cardToEdit.tags || []);
+                setLikes(cardToEdit.likes || 0);
             }
         }
     }, [boards, id]);
@@ -56,6 +58,8 @@ function EditCard() {
             bgColor,
             caption,
             tags,
+            likes,
+            comments: boards.comments,
             _id: id,
             token: user.token
         };
@@ -115,7 +119,7 @@ function EditCard() {
                 <Stack 
                 direction="column" 
                 sx={{ml: 4}}>
-                    <BoardCard cards={{title, caption, tags, image }} bgColor={bgColor} tags={tags}/>
+                    <BoardCard cards={{title, caption, tags, image, likes }} bgColor={bgColor} tags={tags}/>
                 </Stack>
             </Box> 
         </Container>

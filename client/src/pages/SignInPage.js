@@ -1,4 +1,4 @@
-import {Button, Container, Stack, TextField, Typography} from "@mui/material";
+import {Button, Stack, TextField, Typography} from "@mui/material";
 import { useAuth } from "../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -81,11 +81,7 @@ function SingIN() {
             label="Enter username" 
             variant="outlined" 
             size="small"
-            sx={{color: "#8332a8",
-                '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                        borderColor: '#8332a8', 
-                },},
+            sx={{
                 marginTop: '16px'
             }} 
             onChange={(e) => setUsername(e.target.value)}
@@ -97,11 +93,7 @@ function SingIN() {
             variant="outlined" 
             size="small"
             onChange={(e) => setPassword(e.target.value)}
-            sx={{color: "#8332a8",
-                '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                        borderColor: '#8332a8', 
-                },},
+            sx={{
                 marginTop: '16px'
             }}
             >

@@ -39,8 +39,36 @@ exports.editBoard = async (req, res) => {
         if(!updated) {
             return res.status(404).json({ message: 'Board not found' });
         }
-    res.json(updated.toObject());
+        res.json(updated.toObject());
     } catch(err) {
         return res.status(500).json({ message: 'Failed to update board', error: err.message });
     }
+}
+
+exports.likeBoard = async (req, res) => {
+    try {
+        const updated = await Board.findByIdAndUpdate(req.params.id, {likes: req.body.newLikes}, {new: true});
+        const updatedBoards = await Board.find({userId: req.user._id});
+        console.log("updated: ", updated);
+        return res.status(200).json(updatedBoards);
+    } catch(err) {
+        res.status(500).json({message: 'Failed to fetch boards'});
+    };
+}
+
+exports.comments = async(req, res) => {
+    try {
+        const updated = await Board.findOneAndUpdate(
+        {_id: req.params.id, userId: req.user._id},
+        req.body,
+        {new: true}
+        );
+        console.log('updated: ', updated)
+        if(!updated) {
+            return res.status(500).json({message: 'Board not found'})
+        };
+        res.json(updated.toObject());
+    } catch(err) {
+        return res.status(500).json({message: 'Failed to fetch boards'});
+    };
 }

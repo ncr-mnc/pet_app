@@ -1,5 +1,5 @@
 import BoardCard from "../components/BoardCard";
-import { Container, Stack, Button, Box, Alert, Snackbar } from "@mui/material";
+import { Stack, Button, Box, Alert, Snackbar } from "@mui/material";
 import { useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
 import UploadImage from "../components/UploadImage";
@@ -13,7 +13,7 @@ function CreateCard() {
     const [cards, setCards] = useState({});
     const [title, setTitle] = useState("");
     const [image, setImage] = useState(null);
-    const [bgColor, setBgColor] = useState("#8332a8");
+    const [bgColor, setBgColor] = useState("#0c0d0d");
     const [caption, setCaption] = useState("");
     const [tags, setTags] = useState([]);
     const [boards, setBoards] = useState([]);
@@ -47,7 +47,7 @@ function CreateCard() {
         setCards(newCard);
         setTitle("");
         setImage(null);
-        setBgColor("#8332a8");
+        setBgColor("#0c0d0d");
         setCaption("");
         setTags([]);
 
@@ -69,7 +69,10 @@ function CreateCard() {
         setOpenSnackbar(false);
       };
     return (
-        <Container maxWidth="lg" sx={{ display: "flex", gap: 3, mt: 4 }}>
+        <Box maxWidth="lg" sx={{ display: "flex", gap: 3, mt: 4, alignItems: 'center', justifyContent: 'space-around', flexDirection: {  
+            xs: 'column',  // мобільні
+            sm: 'row',   // планшети
+            md: 'row', } }}>
             <Box sx={{ flex: 1, maxWidth: 400 }}>
                 <Stack direction="column" spacing={2} >
                     <SetTitle onChange={setTitle}/>
@@ -100,7 +103,7 @@ function CreateCard() {
                     <BoardCard cards={cards} bgColor={bgColor} tags={tags}/>
                 </Stack>
             </Box> 
-        </Container>
+        </Box>
     )
 }
 export default CreateCard;

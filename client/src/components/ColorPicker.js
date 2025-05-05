@@ -12,11 +12,7 @@ function ColorPicker({value, onChange}) {
         onChange={(e) => onChange(e.target.value)}
         sx={{ 
             width: "150px", 
-            margin: "16px 0" ,
-            '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                    borderColor: "#8332a8", 
-            },}
+            margin: "16px 0"
         }}
         /> 
     );
