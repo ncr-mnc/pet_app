@@ -39,7 +39,7 @@ const  UploadImage = ({value, onChange}) => {
             <img
               src={value}
               alt="Preview"
-              style={{ marginTop: "8px", maxWidth: "100%", borderRadius: "8px" }}
+              style={{ marginTop: "8px", width: '50%', borderRadius: "8px" }}
             />
         )}
         </>

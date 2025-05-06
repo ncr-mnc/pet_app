@@ -7,8 +7,8 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NavLink } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddCommentIcon from '@mui/icons-material/AddComment';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 
 function CardWrapper({card, onDelete, onLike}) {
     const cardRef = useRef();
@@ -50,7 +50,7 @@ function CardWrapper({card, onDelete, onLike}) {
                 variant='contained'
                 size="small"  
                 sx={{ marginTop: '8px'}}
-                onClick={() => onLike(card._id, card.likes)}><FavoriteIcon/></Button>
+                onClick={() => onLike(card._id, card.likes)}><FactCheckIcon/></Button>
             </Stack>
         </Stack>
     )

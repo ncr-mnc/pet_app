@@ -1,5 +1,5 @@
 import { Card, CardContent, Typography, CardMedia, Chip, Stack } from "@mui/material"
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 
 function BoardCard({cards, bgColor, tags}) {
     return ( 
@@ -23,7 +23,7 @@ function BoardCard({cards, bgColor, tags}) {
                 component="h2"
                 sx={{ fontWeight: 600 }}>{cards.title}
                 </Typography>
-                <Typography> <FavoriteIcon sx={{color: '#cf382d'}}/>{cards.likes}</Typography>
+                <Typography> <FactCheckIcon sx={{color: '#cf382d'}}/>{cards.likes}</Typography>
             </CardContent>
             <CardContent direction="row" sx={{
             display: 'flex',

@@ -45,9 +45,9 @@ function NavBar() {
                     color: 'white'
                 }}
                 >
-                    {user.isAuthenticated && <MenuItem component={NavLink} to="/createBoard">Create card</MenuItem>}
-                    {user.isAuthenticated && <MenuItem  component={NavLink} to="/myCards">My card</MenuItem>}
-                    {!user.isAuthenticated && <MenuItem  component={NavLink} to="/">Home page</MenuItem>}
+                    {user.isAuthenticated && <MenuItem component={NavLink} to="/createBoard" onClick={handleClose}>Create card</MenuItem>}
+                    {user.isAuthenticated && <MenuItem  component={NavLink} to="/myCards" onClick={handleClose}>My card</MenuItem>}
+                    {!user.isAuthenticated && <MenuItem  component={NavLink} to="/" onClick={handleClose}>Home page</MenuItem>}
                 </Menu>
             </Box>
             <Typography 
@@ -60,7 +60,7 @@ function NavBar() {
                     fontWeight: 600,
                     marginTop: '0.5%',
                     color: 'white'
-                }}>Welcome:)
+                }}>Cardflow
                 </Typography>
             <ButtonGroup 
                     sx={{display: "flex", 

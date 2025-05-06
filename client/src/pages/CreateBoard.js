@@ -20,7 +20,7 @@ function CreateCard() {
     const {user} = useAuth();
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
-    
+    const [snackColor, setSnackColor] = useState('success');
     const createBoard = async (boardData) => {
         const res = await fetch("http://localhost:5000/api/boards", {
             method: "POST",
@@ -52,11 +52,18 @@ function CreateCard() {
         setTags([]);
 
         const newBoard = await createBoard(newCard);
+        if (!newBoard.title) {
+            setSnackbarMessage('Failed to create!');
+            setSnackColor('error');
+            setOpenSnackbar(true);
+            return;
+        }
         setBoards([...boards, newBoard]);
         const isSuccess = true;
-        if (isSuccess) {
+        if (newBoard) {
           setSnackbarMessage('Successfully created!');
           setOpenSnackbar(true);
+          setSnackColor('success');
         }
     }
 
@@ -90,7 +97,7 @@ function CreateCard() {
                         onClose={handleCloseSnackbar}
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                     >
-                        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+                        <Alert onClose={handleCloseSnackbar} severity={snackColor} sx={{ width: '100%' }}>
                         {snackbarMessage}
                         </Alert>
                     </Snackbar>                   

@@ -12,10 +12,10 @@ const storage = new CloudinaryStorage({
     cloudinary,
     params: {
         folder: 'moodboard',
-        allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+        allowedFormats: ['jpg', 'png', 'jpeg', 'webp'],
     },
 });
 
 const upload = multer({ storage });
 
-module.exports = { cloudinary, upload };
+module.exports = { upload };

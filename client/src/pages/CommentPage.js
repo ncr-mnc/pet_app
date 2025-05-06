@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
 import BoardCard from "../components/BoardCard";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function CommentPage() {
     const {id} = useParams();
@@ -108,7 +108,7 @@ function CommentPage() {
                     <Stack key={index} sx={{
                         display: 'flex', 
                         justifyContent: 'center', 
-                        flexDirection: 'row',
+                        flexDirection: {xs: 'column', sm: 'row', md: 'row'},
                         alignItems: 'center',
                         width: '100%'}}>
                         <Typography minWidth='90%'
@@ -117,9 +117,10 @@ function CommentPage() {
                             border: '2px', 
                             borderRadius: '16px', 
                             backgroundColor: '#434545', 
+                            wordBreak: "break-word",
                             margin: '8px'}}
                             >{el}</Typography>    
-                        <Button onClick={() => handleDelete(index)}> Delete</Button>
+                        <Button onClick={() => handleDelete(index)}><DeleteIcon/></Button>
                     </Stack>
                 ))}
             </Stack>

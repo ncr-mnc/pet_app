@@ -10,7 +10,7 @@ function SingIN() {
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const userId = localStorage.getItem('userId') || '';
-    console.log("token in signin: ", user.token);
+
     useEffect(() => {
         if (!userId) return;
         const fetchData = async() => {
@@ -44,12 +44,18 @@ function SingIN() {
        if(res.ok) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.userId);
+        setUser({
+            isAuthenticated: true,
+            username: checkUser.username,
+            token: data.token
+        });
         setMessage("")
         navigate('/');
        } else {
         setMessage("Wrong data, try again or sign up first");
        }
     }
+
     const handleSignIn = async (e) => {
         e.preventDefault();
         const userToCheck = {
@@ -58,7 +64,7 @@ function SingIN() {
         }
         await singnIn(userToCheck);
     };
-
+    
     return(
         <Stack
         sx={{
