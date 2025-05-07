@@ -16,7 +16,7 @@ function MyCards() {
             return;
         }
         const fetchData = async() => {
-            const res = await fetch("http://localhost:5000/api/boards", {
+            const res = await fetch("/api/boards", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -44,8 +44,8 @@ function MyCards() {
     };
 
     const deleteBoard = async(id) => {
-        console.log(`http://localhost:5000/api/boards/${id}`);
-        const res = await fetch(`http://localhost:5000/api/boards/${id}`, {
+        console.log(`/api/boards/${id}`);
+        const res = await fetch(`/api/boards/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -72,7 +72,7 @@ function MyCards() {
     }, [boards]);
 
     const likeBoard = async(id, newLikes) => {
-        const res = await fetch(`http://localhost:5000/api/boards/likes/${id}`, {
+        const res = await fetch(`/api/boards/likes/${id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
