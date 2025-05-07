@@ -11,7 +11,7 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const signUp = async (newUser) => {
-        const res = await fetch("http://localhost:5000/api/signUp", {
+        const res = await fetch("/api/signUp", {
             method: "POST",
             headers: {"Content-type": "application/json"},
             body: JSON.stringify(newUser)

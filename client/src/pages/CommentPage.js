@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
 import BoardCard from "../components/BoardCard";
 import DeleteIcon from '@mui/icons-material/Delete';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function CommentPage() {
     const {id} = useParams();
@@ -14,7 +15,7 @@ function CommentPage() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await fetch('http://localhost:5000/api/boards', {
+            const res = await fetch(`${API_BASE_URL}/api/boards`, {
                 method: 'GET',
                 headers: {'Authorization': `Bearer ${user.token}`}
             })
@@ -49,7 +50,7 @@ function CommentPage() {
             token: user.token
         })
 
-        const res = await fetch(`http://localhost:5000/api/boards/comments/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/api/boards/comments/${id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
@@ -76,7 +77,7 @@ function CommentPage() {
             _id: id,
             token: user.token
         });
-        const res = await fetch(`http://localhost:5000/api/boards/comments/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/api/boards/comments/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

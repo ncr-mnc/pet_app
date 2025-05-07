@@ -14,7 +14,7 @@ function SingIN() {
     useEffect(() => {
         if (!userId) return;
         const fetchData = async() => {
-            const res = await fetch(`http://localhost:5000/api/getUser/${userId}`, {
+            const res = await fetch(`/api/getUser/${userId}`, {
                 method: "GET",
                 headers: {"Content-Type": "application/json",
                 },
@@ -35,7 +35,7 @@ function SingIN() {
     }, [userId]);
     console.log("user in sign in: ", user)
     const singnIn = async(checkUser) => {
-        const res = await fetch("http://localhost:5000/api/signIn", {
+        const res = await fetch("/api/signIn", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(checkUser)

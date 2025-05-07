@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { Container, Box, Stack, Button, Alert, Snackbar } from "@mui/material";
 import { useAuth } from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function EditCard() {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ function EditCard() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await fetch("http://localhost:5000/api/boards", {
+            const res = await fetch(`${API_BASE_URL}/api/boards`, {
                 method: "GET",
                 headers: {"Authorization": `Bearer ${user.token}`}
             })
@@ -63,7 +63,7 @@ function EditCard() {
             _id: id,
             token: user.token
         };
-        const res = await fetch(`http://localhost:5000/api/boards/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/api/boards/${id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json",
             "Authorization": `Bearer ${user.token}`},

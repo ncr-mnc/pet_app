@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const  UploadImage = ({value, onChange}) => {
     const handleImageComp = async (e) => {
@@ -8,7 +9,7 @@ const  UploadImage = ({value, onChange}) => {
             const formData = new FormData();
             formData.append('image', file);
             try{
-            const res = await fetch('http://localhost:5000/api/upload', {
+            const res = await fetch(`${API_BASE_URL}/api/upload`, {
                 method: 'POST',
                 body: formData,
             });

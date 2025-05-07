@@ -7,7 +7,7 @@ import ColorPicker from "../components/ColorPicker";
 import SetCaption from "../components/SetCaption";
 import SetTitle from "../components/SetTitle";
 import TagsInput from "../components/TagsInput";
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function CreateCard() {
     const [cards, setCards] = useState({});
@@ -22,7 +22,7 @@ function CreateCard() {
     const [snackbarMessage, setSnackbarMessage] = useState('');
     const [snackColor, setSnackColor] = useState('success');
     const createBoard = async (boardData) => {
-        const res = await fetch("http://localhost:5000/api/boards", {
+        const res = await fetch(`${API_BASE_URL}/api/boards`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
